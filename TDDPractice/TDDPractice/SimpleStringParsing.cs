@@ -21,7 +21,20 @@ namespace TDDPractice
 
         public static int StringCalculatorKata(string str)
         {
-            return int.MinValue;
+            if (str == "")
+            {
+                return 0;
+            }
+            if (str.StartsWith("0,"))
+            {
+                str = str.Substring(2);
+            }
+            
+            if (str.EndsWith(",0"))
+            {
+                str = str.Substring(0,(str.IndexOf(",")));
+            }
+            return int.Parse(str);
         }
     }
 }
