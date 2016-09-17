@@ -46,7 +46,7 @@ namespace TDDPractice_Tests
         [TestMethod]
         public void Test001_EmptyStringIsZero()
         {
-            Assert.AreEqual(0, SimpleStringParsing.StringCalculatorKata(""), "Empty strings shouls be zero");
+            Assert.AreEqual(0, SimpleStringParsing.StringCalculatorKata(""), "Empty strings should be zero");
         }
 
         [TestMethod]
@@ -91,7 +91,35 @@ namespace TDDPractice_Tests
         }
 
         [TestMethod]
-        public void Test006_ThreePositiveNumbers_Triples()
+        public void Test006_ZeroPlusTwoPositiveNumbers_Triples()
+        {
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("0,1,1"));
+            Assert.AreEqual(12, SimpleStringParsing.StringCalculatorKata("0,2,10"));
+            Assert.AreEqual(30, SimpleStringParsing.StringCalculatorKata("0,10,20"));
+            Assert.AreEqual(22, SimpleStringParsing.StringCalculatorKata("0,12,10"));
+            Assert.AreEqual(211, SimpleStringParsing.StringCalculatorKata("0,210,1"));
+            Assert.AreEqual(100033, SimpleStringParsing.StringCalculatorKata("0,33,100000"));
+        }
+
+        [TestMethod]
+        public void Test007_ThreePositiveNumbers_Triples()
+        {
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("1,1,0"));
+            Assert.AreEqual(3, SimpleStringParsing.StringCalculatorKata("1,2,0"));
+            Assert.AreEqual(20, SimpleStringParsing.StringCalculatorKata("10,10,0"));
+            Assert.AreEqual(23, SimpleStringParsing.StringCalculatorKata("11,12,0"));
+            Assert.AreEqual(230, SimpleStringParsing.StringCalculatorKata("20,210,0"));
+            Assert.AreEqual(6633, SimpleStringParsing.StringCalculatorKata("6600,33,0"));
+        }
+
+        [TestMethod]
+        public void Test008_ThreeZeroes_Triples()
+        {
+            Assert.AreEqual(0, SimpleStringParsing.StringCalculatorKata("0,0,0"));
+        }
+
+        [TestMethod]
+        public void Test009_ThreePositiveNumbers_Triples()
         {
             Assert.AreEqual(3, SimpleStringParsing.StringCalculatorKata("1,1,1"));
             Assert.AreEqual(30, SimpleStringParsing.StringCalculatorKata("1,2,10"));
