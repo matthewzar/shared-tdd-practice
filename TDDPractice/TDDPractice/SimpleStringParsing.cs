@@ -25,16 +25,14 @@ namespace TDDPractice
             {
                 return 0;
             }
-            if (str.StartsWith("0,"))
+
+            var stringarray = str.Split(',');
+            int temp = 0;
+            foreach (var num in stringarray)
             {
-                str = str.Substring(2);
+                temp += int.Parse(num);
             }
-            
-            if (str.EndsWith(",0"))
-            {
-                str = str.Substring(0,(str.IndexOf(",")));
-            }
-            return int.Parse(str);
+            return temp;
         }
     }
 }
