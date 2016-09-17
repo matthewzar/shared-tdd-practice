@@ -18,5 +18,10 @@ namespace TDDPractice
             
             throw new ArgumentException();
         }
+
+        public static int StringCalculatorKata(string str)
+        {
+            return int.MinValue;
+        }
     }
 }
