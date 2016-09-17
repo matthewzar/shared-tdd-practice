@@ -10,7 +10,13 @@ namespace TDDPractice
     {
         public static int StringToInt(string str)
         {
-            return 0;
+            int ret;
+            if (int.TryParse(str, out ret))
+            {
+                return ret;
+            }
+            
+            throw new ArgumentException();
         }
     }
 }
