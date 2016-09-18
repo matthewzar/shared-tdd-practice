@@ -594,5 +594,80 @@ namespace TDDPractice_Tests
             AssertThrowsException("negatives not allowed: -12,-1,-11", "//;\n-12;-1;-11");
             AssertThrowsException("negatives not allowed: -10,-10,-10", "//;\n-10,-10;-10");
         }
+
+        [TestMethod]
+        public void Test033_Exclude1001()
+        {
+            Assert.AreEqual(0, SimpleStringParsing.StringCalculatorKata("1001,0"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("1001\n1,1"));
+            Assert.AreEqual(3, SimpleStringParsing.StringCalculatorKata("1,1001,2"));
+            Assert.AreEqual(111, SimpleStringParsing.StringCalculatorKata("1001\n111,1001"));
+            Assert.AreEqual(116, SimpleStringParsing.StringCalculatorKata("1001\n111,1001,1001,1001,5"));
+            Assert.AreEqual(10, SimpleStringParsing.StringCalculatorKata("//;\n1001;10"));
+        }
+
+        [TestMethod]
+        public void Test034_ExcludeAllGreaterThan1000()
+        {
+            Assert.AreEqual(0, SimpleStringParsing.StringCalculatorKata("945945,0"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("4653847\n1,1"));
+            Assert.AreEqual(3, SimpleStringParsing.StringCalculatorKata("1,45545,2"));
+            Assert.AreEqual(111, SimpleStringParsing.StringCalculatorKata("4564\n111,4540"));
+            Assert.AreEqual(116, SimpleStringParsing.StringCalculatorKata("45684\n111,4448,4864,4444,5"));
+            Assert.AreEqual(10, SimpleStringParsing.StringCalculatorKata("//;\n44445;10"));
+        }
+
+        [TestMethod]
+        public void Test035_CustomDelimiters1_TripleStars()
+        {
+            Assert.AreEqual(20, SimpleStringParsing.StringCalculatorKata("//[***]\n10***10"));
+            Assert.AreEqual(20, SimpleStringParsing.StringCalculatorKata("//[***]\n1001***20"));
+            Assert.AreEqual(22, SimpleStringParsing.StringCalculatorKata("//[***]\n1001***20***2"));
+            Assert.AreEqual(0, SimpleStringParsing.StringCalculatorKata("//[***]\n1001***1001,0"));
+        }
+
+        [TestMethod]
+        public void Test036_CustomDelimiters2_DoublePlus()
+        {
+            Assert.AreEqual(21, SimpleStringParsing.StringCalculatorKata("//[++]\n11++10"));
+            Assert.AreEqual(20, SimpleStringParsing.StringCalculatorKata("//[++]\n1001++20"));
+            Assert.AreEqual(22, SimpleStringParsing.StringCalculatorKata("//[++]\n1001++20++2"));
+            Assert.AreEqual(0, SimpleStringParsing.StringCalculatorKata("//[++]\n1001++1001,0"));
+        }
+
+        [TestMethod]
+        public void Test037_CustomDelimiters3_MixedWithNumbers()
+        {
+            //Nothing says a delimiter can't contain a number, so some of these do
+            Assert.AreEqual(28, SimpleStringParsing.StringCalculatorKata("//[*6a]\n11*6a17"));
+            Assert.AreEqual(20, SimpleStringParsing.StringCalculatorKata("//[,,]\n1001,,20"));
+            Assert.AreEqual(22, SimpleStringParsing.StringCalculatorKata("//[(9]\n1001(920,2"));
+            Assert.AreEqual(106, SimpleStringParsing.StringCalculatorKata("//[-666-]\n1501-666-101,5"));
+        }
+
+        [TestMethod]
+        public void Test038_TwoCustomLength1Delimiters()
+        {
+            Assert.AreEqual(6, SimpleStringParsing.StringCalculatorKata("//[+][*]\n1+2+3"));
+            Assert.AreEqual(9, SimpleStringParsing.StringCalculatorKata("//[+][*]\n1*2+6"));
+            Assert.AreEqual(17, SimpleStringParsing.StringCalculatorKata("//[_][.]\n1.2_6,8"));
+            Assert.AreEqual(7, SimpleStringParsing.StringCalculatorKata("//[_][.]\n1.10000_6"));
+        }
+
+        [TestMethod]
+        public void Test039_MultipleCustomLength1Delimiters()
+        {
+            //adding unnused deliters to previous test's cases to detect croken parsing
+            Assert.AreEqual(6, SimpleStringParsing.StringCalculatorKata("//[+][*][_]\n1+2+3"));
+            Assert.AreEqual(9, SimpleStringParsing.StringCalculatorKata("//[_][+][*]\n1*2+6"));
+            Assert.AreEqual(17, SimpleStringParsing.StringCalculatorKata("//[_][=][.]\n1.2_6,8"));
+            Assert.AreEqual(7, SimpleStringParsing.StringCalculatorKata("//[+][_][.]\n1.10000_6"));
+
+            //using all delimeters
+            Assert.AreEqual(7, SimpleStringParsing.StringCalculatorKata("//[+][*][_][)]\n1)2_3*1+1000"));
+            Assert.AreEqual(5, SimpleStringParsing.StringCalculatorKata("//[_][)][+][*]\n1_1)1+1*1"));
+            Assert.AreEqual(308, SimpleStringParsing.StringCalculatorKata("//[)][_][=][.]\n2)2_2=2.100.200.1001"));
+            Assert.AreEqual(45, SimpleStringParsing.StringCalculatorKata("//[+][)][_][.]\n1+2,3)4,5\n6_7.8,9"));
+        }
     }
 }
