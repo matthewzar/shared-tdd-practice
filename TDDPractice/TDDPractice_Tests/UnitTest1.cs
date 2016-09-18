@@ -56,7 +56,7 @@ namespace TDDPractice_Tests
             Assert.AreEqual(10, SimpleStringParsing.StringCalculatorKata("10"), "Simple numbers should be parsed versions of themselves");
             Assert.AreEqual(20, SimpleStringParsing.StringCalculatorKata("20"), "Simple numbers should be parsed versions of themselves");
             Assert.AreEqual(333, SimpleStringParsing.StringCalculatorKata("333"), "Simple numbers should be parsed versions of themselves");
-            Assert.AreEqual(4567, SimpleStringParsing.StringCalculatorKata("4567"), "Simple numbers should be parsed versions of themselves");
+            Assert.AreEqual(1000, SimpleStringParsing.StringCalculatorKata("1000"), "Simple numbers should be parsed versions of themselves");
         }
 
         [TestMethod]
@@ -66,7 +66,7 @@ namespace TDDPractice_Tests
             Assert.AreEqual(10, SimpleStringParsing.StringCalculatorKata("0,10"), "Zero + x is still x");
             Assert.AreEqual(20, SimpleStringParsing.StringCalculatorKata("0,20"), "Zero + x is still x");
             Assert.AreEqual(333, SimpleStringParsing.StringCalculatorKata("0,333"), "Zero + x is still x");
-            Assert.AreEqual(4567, SimpleStringParsing.StringCalculatorKata("0,4567"), "Zero + x is still x");
+            Assert.AreEqual(1000, SimpleStringParsing.StringCalculatorKata("0,1000"), "Zero + x is still x");
         }
 
         [TestMethod]
@@ -76,7 +76,7 @@ namespace TDDPractice_Tests
             Assert.AreEqual(10, SimpleStringParsing.StringCalculatorKata("10,0"), "x+zero is still x");
             Assert.AreEqual(20, SimpleStringParsing.StringCalculatorKata("20,0"), "x+zero + x is still x");
             Assert.AreEqual(333, SimpleStringParsing.StringCalculatorKata("333,0"), "x+zero + x is still x");
-            Assert.AreEqual(4567, SimpleStringParsing.StringCalculatorKata("4567,0"), "x+zero + x is still x");
+            Assert.AreEqual(1000, SimpleStringParsing.StringCalculatorKata("1000,0"), "x+zero + x is still x");
         }
 
         [TestMethod]
@@ -87,7 +87,7 @@ namespace TDDPractice_Tests
             Assert.AreEqual(20, SimpleStringParsing.StringCalculatorKata("10,10"));
             Assert.AreEqual(23, SimpleStringParsing.StringCalculatorKata("11,12"));
             Assert.AreEqual(230, SimpleStringParsing.StringCalculatorKata("20,210"));
-            Assert.AreEqual(6633, SimpleStringParsing.StringCalculatorKata("6600,33"));
+            Assert.AreEqual(1010, SimpleStringParsing.StringCalculatorKata("977,33"));
         }
 
         [TestMethod]
@@ -98,7 +98,7 @@ namespace TDDPractice_Tests
             Assert.AreEqual(30, SimpleStringParsing.StringCalculatorKata("0,10,20"));
             Assert.AreEqual(22, SimpleStringParsing.StringCalculatorKata("0,12,10"));
             Assert.AreEqual(211, SimpleStringParsing.StringCalculatorKata("0,210,1"));
-            Assert.AreEqual(100033, SimpleStringParsing.StringCalculatorKata("0,33,100000"));
+            Assert.AreEqual(1010, SimpleStringParsing.StringCalculatorKata("0,33,977"));
         }
 
         [TestMethod]
@@ -109,7 +109,7 @@ namespace TDDPractice_Tests
             Assert.AreEqual(20, SimpleStringParsing.StringCalculatorKata("10,10,0"));
             Assert.AreEqual(23, SimpleStringParsing.StringCalculatorKata("11,12,0"));
             Assert.AreEqual(230, SimpleStringParsing.StringCalculatorKata("20,210,0"));
-            Assert.AreEqual(6633, SimpleStringParsing.StringCalculatorKata("6600,33,0"));
+            Assert.AreEqual(1010, SimpleStringParsing.StringCalculatorKata("977,33,0"));
         }
 
         [TestMethod]
@@ -126,7 +126,7 @@ namespace TDDPractice_Tests
             Assert.AreEqual(40, SimpleStringParsing.StringCalculatorKata("10,10,20"));
             Assert.AreEqual(23, SimpleStringParsing.StringCalculatorKata("11,12,0"));
             Assert.AreEqual(231, SimpleStringParsing.StringCalculatorKata("20,210,1"));
-            Assert.AreEqual(106633, SimpleStringParsing.StringCalculatorKata("6600,33,100000"));
+            Assert.AreEqual(1090, SimpleStringParsing.StringCalculatorKata("977,33,80"));
         }
 
         [TestMethod]
@@ -599,6 +599,7 @@ namespace TDDPractice_Tests
         public void Test033_Exclude1001()
         {
             Assert.AreEqual(0, SimpleStringParsing.StringCalculatorKata("1001,0"));
+            Assert.AreEqual(1000, SimpleStringParsing.StringCalculatorKata("1000,0"));
             Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("1001\n1,1"));
             Assert.AreEqual(3, SimpleStringParsing.StringCalculatorKata("1,1001,2"));
             Assert.AreEqual(111, SimpleStringParsing.StringCalculatorKata("1001\n111,1001"));
@@ -664,7 +665,7 @@ namespace TDDPractice_Tests
             Assert.AreEqual(7, SimpleStringParsing.StringCalculatorKata("//[+][_][.]\n1.10000_6"));
 
             //using all delimeters
-            Assert.AreEqual(7, SimpleStringParsing.StringCalculatorKata("//[+][*][_][)]\n1)2_3*1+1000"));
+            Assert.AreEqual(1007, SimpleStringParsing.StringCalculatorKata("//[+][*][_][)]\n1)2_3*1+1000"));
             Assert.AreEqual(5, SimpleStringParsing.StringCalculatorKata("//[_][)][+][*]\n1_1)1+1*1"));
             Assert.AreEqual(308, SimpleStringParsing.StringCalculatorKata("//[)][_][=][.]\n2)2_2=2.100.200.1001"));
             Assert.AreEqual(45, SimpleStringParsing.StringCalculatorKata("//[+][)][_][.]\n1+2,3)4,5\n6_7.8,9"));

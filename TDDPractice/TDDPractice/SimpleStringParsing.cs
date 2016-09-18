@@ -33,15 +33,36 @@ namespace TDDPractice
         {
             if (str == "") return 0;
 
-            if(str.StartsWith("//")) str = str.Replace(str[2], ',').Replace("//,\n", "");
+            if(str.StartsWith("//"))
+            {
+                if (str.Contains("["))
+                {
+                    var delimstr = str.Substring(3, str.IndexOf('\n') - 4);
+                    var delimarr = delimstr.Split(new string[] { "][" }, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (var symbol in delimarr)
+                    {
+                        str = str.Replace(symbol, ",");
+                    }
+                    str = str.Replace("[,]", "").Replace("//\n", "");
+                }
+                else
+                {
+                    var delim = str.Substring(2, str.IndexOf('\n') - 2);
+                    str = str.Replace(delim, ",").Replace("//,\n", "");
+                }
+                
+            }
+                
 
             var stringarray = str.Replace('\n',',').Split(',');
                         
             if(str.Contains('-'))
                 HandleNegatives(stringarray);
 
-            return stringarray.Select(strNum => int.Parse(strNum))
-                              .Aggregate((x, y) => x + y);
+            return stringarray
+                        .Select(strNum => int.Parse(strNum))
+                        .Where(x => x<1001)
+                        .Sum();
         }
     }
 }
