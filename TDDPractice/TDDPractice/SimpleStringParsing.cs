@@ -29,32 +29,39 @@ namespace TDDPractice
             throw new Exception("negatives not allowed: " + negatives);
         }
 
+        public static string SanitizeString(string str)
+        {
+            if (str.StartsWith("//"))
+            {
+                string delimstr;
+                if (str.Contains("["))
+                {
+                    delimstr = str.Substring(3, str.IndexOf('\n') - 4);
+                    str = str.Remove(0, 5 + delimstr.Length);
+                }
+                else
+                {
+                    delimstr = str.Substring(2, str.IndexOf('\n') - 2);
+                    str = str.Remove(0, 3 + delimstr.Length);
+                }
+
+                var delimarr = delimstr.Split(new string[] { "][" }, StringSplitOptions.RemoveEmptyEntries);
+
+                foreach (var symbol in delimarr)
+                {
+                    str = str.Replace(symbol, ",");
+                }
+            }
+            return str.Replace("[,]", "").Replace("//\n", "").Replace('\n', ',');
+        }
+
         public static int StringCalculatorKata(string str)
         {
             if (str == "") return 0;
 
-            if(str.StartsWith("//"))
-            {
-                if (str.Contains("["))
-                {
-                    var delimstr = str.Substring(3, str.IndexOf('\n') - 4);
-                    var delimarr = delimstr.Split(new string[] { "][" }, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (var symbol in delimarr)
-                    {
-                        str = str.Replace(symbol, ",");
-                    }
-                    str = str.Replace("[,]", "").Replace("//\n", "");
-                }
-                else
-                {
-                    var delim = str.Substring(2, str.IndexOf('\n') - 2);
-                    str = str.Replace(delim, ",").Replace("//,\n", "");
-                }
-                
-            }
-                
+            str = SanitizeString(str);                
 
-            var stringarray = str.Replace('\n',',').Split(',');
+            var stringarray = str.Split(',');
                         
             if(str.Contains('-'))
                 HandleNegatives(stringarray);
