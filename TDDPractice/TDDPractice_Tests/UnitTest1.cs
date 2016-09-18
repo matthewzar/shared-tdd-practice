@@ -128,5 +128,471 @@ namespace TDDPractice_Tests
             Assert.AreEqual(231, SimpleStringParsing.StringCalculatorKata("20,210,1"));
             Assert.AreEqual(106633, SimpleStringParsing.StringCalculatorKata("6600,33,100000"));
         }
+
+        [TestMethod]
+        public void Test010_EnterSymbols_Doubles()
+        {
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("1\n1"));
+            Assert.AreEqual(1, SimpleStringParsing.StringCalculatorKata("0\n1"));
+            Assert.AreEqual(1, SimpleStringParsing.StringCalculatorKata("1\n0"));
+            Assert.AreEqual(12, SimpleStringParsing.StringCalculatorKata("1\n11"));
+            Assert.AreEqual(13, SimpleStringParsing.StringCalculatorKata("12\n1"));
+            Assert.AreEqual(20, SimpleStringParsing.StringCalculatorKata("10\n10"));
+        }
+
+        [TestMethod]
+        public void Test011_EnterSymbols_Triples_Begin()
+        {
+            Assert.AreEqual(3, SimpleStringParsing.StringCalculatorKata("1\n1,1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("0\n1,1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("1\n0,1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("1\n1,0"));
+            Assert.AreEqual(24, SimpleStringParsing.StringCalculatorKata("1\n11,12"));
+            Assert.AreEqual(24, SimpleStringParsing.StringCalculatorKata("12\n1,11"));
+            Assert.AreEqual(30, SimpleStringParsing.StringCalculatorKata("10\n10,10"));
+        }
+
+        [TestMethod]
+        public void Test012_EnterSymbols_Triples_End()
+        {
+            Assert.AreEqual(3, SimpleStringParsing.StringCalculatorKata("1,1\n1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("0,1\n1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("1,0\n1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("1,1\n0"));
+            Assert.AreEqual(24, SimpleStringParsing.StringCalculatorKata("1,11\n12"));
+            Assert.AreEqual(24, SimpleStringParsing.StringCalculatorKata("12,1\n11"));
+            Assert.AreEqual(30, SimpleStringParsing.StringCalculatorKata("10,10\n10"));
+        }
+
+        [TestMethod]
+        public void Test013_EnterSymbols_Triples_Only()
+        {
+            Assert.AreEqual(3, SimpleStringParsing.StringCalculatorKata("1\n1\n1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("0\n1\n1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("1\n0\n1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("1\n1\n0"));
+            Assert.AreEqual(24, SimpleStringParsing.StringCalculatorKata("1\n11\n12"));
+            Assert.AreEqual(24, SimpleStringParsing.StringCalculatorKata("12\n1\n11"));
+            Assert.AreEqual(30, SimpleStringParsing.StringCalculatorKata("10\n10\n10"));
+        }
+
+        [TestMethod]
+        public void Test014_Delimiters_Semicolon_Doubles()
+        {
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//;\n1;1"));
+            Assert.AreEqual(1, SimpleStringParsing.StringCalculatorKata("//;\n0;1"));
+            Assert.AreEqual(1, SimpleStringParsing.StringCalculatorKata("//;\n1;0"));
+            Assert.AreEqual(12, SimpleStringParsing.StringCalculatorKata("//;\n1;11"));
+            Assert.AreEqual(13, SimpleStringParsing.StringCalculatorKata("//;\n12;1"));
+            Assert.AreEqual(20, SimpleStringParsing.StringCalculatorKata("//;\n10;10"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//;\n1\n1"));
+            Assert.AreEqual(1, SimpleStringParsing.StringCalculatorKata("//;\n0\n1"));
+            Assert.AreEqual(1, SimpleStringParsing.StringCalculatorKata("//;\n1\n0"));
+            Assert.AreEqual(12, SimpleStringParsing.StringCalculatorKata("//;\n1\n11"));
+            Assert.AreEqual(13, SimpleStringParsing.StringCalculatorKata("//;\n12\n1"));
+            Assert.AreEqual(20, SimpleStringParsing.StringCalculatorKata("//;\n10\n10"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//;\n1,1"));
+            Assert.AreEqual(1, SimpleStringParsing.StringCalculatorKata("//;\n0,1"));
+            Assert.AreEqual(1, SimpleStringParsing.StringCalculatorKata("//;\n1,0"));
+            Assert.AreEqual(12, SimpleStringParsing.StringCalculatorKata("//;\n1,11"));
+            Assert.AreEqual(13, SimpleStringParsing.StringCalculatorKata("//;\n12,1"));
+            Assert.AreEqual(20, SimpleStringParsing.StringCalculatorKata("//;\n10,10"));
+        }
+
+        [TestMethod]
+        public void Test015_Delimiters_Semicolon_Triples()
+        {
+            Assert.AreEqual(3, SimpleStringParsing.StringCalculatorKata("//;\n1;1;1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//;\n0;1;1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//;\n1;0;1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//;\n1;1;0"));
+            Assert.AreEqual(24, SimpleStringParsing.StringCalculatorKata("//;\n1;11;12"));
+            Assert.AreEqual(24, SimpleStringParsing.StringCalculatorKata("//;\n12;1;11"));
+            Assert.AreEqual(30, SimpleStringParsing.StringCalculatorKata("//;\n10;10;10"));
+
+            Assert.AreEqual(3, SimpleStringParsing.StringCalculatorKata("//;\n1,1;1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//;\n0\n1;1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//;\n1\n0;1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//;\n1\n1;0"));
+            Assert.AreEqual(24, SimpleStringParsing.StringCalculatorKata("//;\n1,11;12"));
+            Assert.AreEqual(24, SimpleStringParsing.StringCalculatorKata("//;\n12\n1;11"));
+            Assert.AreEqual(30, SimpleStringParsing.StringCalculatorKata("//;\n10,10;10"));
+
+            Assert.AreEqual(3, SimpleStringParsing.StringCalculatorKata("//;\n1;1\n1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//;\n0;1,1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//;\n1;0\n1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//;\n1;1\n0"));
+            Assert.AreEqual(24, SimpleStringParsing.StringCalculatorKata("//;\n1;11\n12"));
+            Assert.AreEqual(24, SimpleStringParsing.StringCalculatorKata("//;\n12,1\n11"));
+            Assert.AreEqual(30, SimpleStringParsing.StringCalculatorKata("//;\n10;10\n10"));
+
+            Assert.AreEqual(3, SimpleStringParsing.StringCalculatorKata("//;\n1\n1\n1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//;\n0\n1\n1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//;\n1\n0\n1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//;\n1\n1\n0"));
+            Assert.AreEqual(24, SimpleStringParsing.StringCalculatorKata("//;\n1\n11\n12"));
+            Assert.AreEqual(24, SimpleStringParsing.StringCalculatorKata("//;\n12\n1\n11"));
+            Assert.AreEqual(30, SimpleStringParsing.StringCalculatorKata("//;\n10\n10\n10"));
+        }
+
+        [TestMethod]
+        public void Test016_Delimiters_Star_Doubles()
+        {
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//*\n1*1"));
+            Assert.AreEqual(1, SimpleStringParsing.StringCalculatorKata("//*\n0*1"));
+            Assert.AreEqual(1, SimpleStringParsing.StringCalculatorKata("//*\n1*0"));
+            Assert.AreEqual(12, SimpleStringParsing.StringCalculatorKata("//*\n1*11"));
+            Assert.AreEqual(13, SimpleStringParsing.StringCalculatorKata("//*\n12*1"));
+            Assert.AreEqual(20, SimpleStringParsing.StringCalculatorKata("//*\n10*10"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//*\n1\n1"));
+            Assert.AreEqual(1, SimpleStringParsing.StringCalculatorKata("//*\n0\n1"));
+            Assert.AreEqual(1, SimpleStringParsing.StringCalculatorKata("//*\n1\n0"));
+            Assert.AreEqual(12, SimpleStringParsing.StringCalculatorKata("//*\n1\n11"));
+            Assert.AreEqual(13, SimpleStringParsing.StringCalculatorKata("//*\n12\n1"));
+            Assert.AreEqual(20, SimpleStringParsing.StringCalculatorKata("//*\n10\n10"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//*\n1,1"));
+            Assert.AreEqual(1, SimpleStringParsing.StringCalculatorKata("//*\n0,1"));
+            Assert.AreEqual(1, SimpleStringParsing.StringCalculatorKata("//*\n1,0"));
+            Assert.AreEqual(12, SimpleStringParsing.StringCalculatorKata("//*\n1,11"));
+            Assert.AreEqual(13, SimpleStringParsing.StringCalculatorKata("//*\n12,1"));
+            Assert.AreEqual(20, SimpleStringParsing.StringCalculatorKata("//*\n10,10"));
+        }
+
+        [TestMethod]
+        public void Test017_Delimiters_Star_Triples()
+        {
+            Assert.AreEqual(3, SimpleStringParsing.StringCalculatorKata("//*\n1*1*1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//*\n0*1*1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//*\n1*0*1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//*\n1*1*0"));
+            Assert.AreEqual(24, SimpleStringParsing.StringCalculatorKata("//*\n1*11*12"));
+            Assert.AreEqual(24, SimpleStringParsing.StringCalculatorKata("//*\n12*1*11"));
+            Assert.AreEqual(30, SimpleStringParsing.StringCalculatorKata("//*\n10*10*10"));
+
+            Assert.AreEqual(3, SimpleStringParsing.StringCalculatorKata("//*\n1,1*1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//*\n0\n1*1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//*\n1\n0*1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//*\n1\n1*0"));
+            Assert.AreEqual(24, SimpleStringParsing.StringCalculatorKata("//*\n1,11*12"));
+            Assert.AreEqual(24, SimpleStringParsing.StringCalculatorKata("//*\n12\n1*11"));
+            Assert.AreEqual(30, SimpleStringParsing.StringCalculatorKata("//*\n10,10*10"));
+
+            Assert.AreEqual(3, SimpleStringParsing.StringCalculatorKata("//*\n1*1\n1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//*\n0*1,1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//*\n1*0\n1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//*\n1*1\n0"));
+            Assert.AreEqual(24, SimpleStringParsing.StringCalculatorKata("//*\n1*11\n12"));
+            Assert.AreEqual(24, SimpleStringParsing.StringCalculatorKata("//*\n12,1\n11"));
+            Assert.AreEqual(30, SimpleStringParsing.StringCalculatorKata("//*\n10*10\n10"));
+
+            Assert.AreEqual(3, SimpleStringParsing.StringCalculatorKata("//*\n1\n1\n1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//*\n0\n1\n1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//*\n1\n0\n1"));
+            Assert.AreEqual(2, SimpleStringParsing.StringCalculatorKata("//*\n1\n1\n0"));
+            Assert.AreEqual(24, SimpleStringParsing.StringCalculatorKata("//*\n1\n11\n12"));
+            Assert.AreEqual(24, SimpleStringParsing.StringCalculatorKata("//*\n12\n1\n11"));
+            Assert.AreEqual(30, SimpleStringParsing.StringCalculatorKata("//*\n10\n10\n10"));
+        }
+
+        private void AssertThrowsException(string expectedErrorMessage, string input)
+        {
+            try
+            {
+                SimpleStringParsing.StringCalculatorKata(input);
+                Assert.Fail("Exception wasn't thrown");
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual(expectedErrorMessage, e.Message);
+            }
+        }
+
+        [TestMethod]
+        public void Test018_NegativeNumbers_Single()
+        {
+            AssertThrowsException("negatives not allowed: -0", "-0");
+            AssertThrowsException("negatives not allowed: -10", "-10");
+            AssertThrowsException("negatives not allowed: -20", "-20");
+            AssertThrowsException("negatives not allowed: -333", "-333");
+            AssertThrowsException("negatives not allowed: -4567", "-4567");
+        }
+
+        [TestMethod]
+        public void Test019_NegativeNumbers_Double_start()
+        {
+            AssertThrowsException("negatives not allowed: -0", "-0,1");
+            AssertThrowsException("negatives not allowed: -10", "-10,10");
+            AssertThrowsException("negatives not allowed: -20", "-20,12");
+            AssertThrowsException("negatives not allowed: -333", "-333,130");
+            AssertThrowsException("negatives not allowed: -4567", "-4567,13");
+        }
+
+        [TestMethod]
+        public void Test020_NegativeNumbers_Double_end()
+        {
+            AssertThrowsException("negatives not allowed: -0", "1,-0");
+            AssertThrowsException("negatives not allowed: -10", "10,-10");
+            AssertThrowsException("negatives not allowed: -20", "12,-20");
+            AssertThrowsException("negatives not allowed: -333", "130,-333");
+            AssertThrowsException("negatives not allowed: -4567", "13,-4567");
+        }
+
+        [TestMethod]
+        public void Test021_NegativeNumbers_Double_only()
+        {
+            AssertThrowsException("negatives not allowed: -0,-1", "-0,-1");
+            AssertThrowsException("negatives not allowed: -10,-10", "-10,-10");
+            AssertThrowsException("negatives not allowed: -20,-12", "-20,-12");
+            AssertThrowsException("negatives not allowed: -333,-130", "-333,-130");
+            AssertThrowsException("negatives not allowed: -4567,-13", "-4567,-13");
+        }
+
+        [TestMethod]
+        public void Test022_NegativeNumbers_Double_enter()
+        {
+            AssertThrowsException("negatives not allowed: -0", "-0\n1");
+            AssertThrowsException("negatives not allowed: -10", "-10\n10");
+            AssertThrowsException("negatives not allowed: -20", "-20\n12");
+            AssertThrowsException("negatives not allowed: -333", "-333\n130");
+            AssertThrowsException("negatives not allowed: -4567", "-4567\n13");
+
+            AssertThrowsException("negatives not allowed: -0", "1\n-0");
+            AssertThrowsException("negatives not allowed: -10", "10\n-10");
+            AssertThrowsException("negatives not allowed: -20", "12\n-20");
+            AssertThrowsException("negatives not allowed: -333", "130\n-333");
+            AssertThrowsException("negatives not allowed: -4567", "13\n-4567");
+
+            AssertThrowsException("negatives not allowed: -0,-1", "-0\n-1");
+            AssertThrowsException("negatives not allowed: -10,-10", "-10\n-10");
+            AssertThrowsException("negatives not allowed: -20,-12", "-20\n-12");
+            AssertThrowsException("negatives not allowed: -333,-130", "-333\n-130");
+            AssertThrowsException("negatives not allowed: -4567,-13", "-4567\n-13");
+        }
+
+        [TestMethod]
+        public void Test023_NegativeNumbers_Triple_start()
+        {
+            AssertThrowsException("negatives not allowed: -1", "-1,1,1");
+            AssertThrowsException("negatives not allowed: -0", "-0,1,1");
+            AssertThrowsException("negatives not allowed: -1", "-1,0,1");
+            AssertThrowsException("negatives not allowed: -1", "-1,1,0");
+            AssertThrowsException("negatives not allowed: -1", "-1,11,12");
+            AssertThrowsException("negatives not allowed: -12", "-12,1,11");
+            AssertThrowsException("negatives not allowed: -10", "-10,10,10");
+        }
+
+        [TestMethod]
+        public void Test024_NegativeNumbers_Triple_end()
+        {
+            AssertThrowsException("negatives not allowed: -1", "1,1,-1");
+            AssertThrowsException("negatives not allowed: -1", "0,1,-1");
+            AssertThrowsException("negatives not allowed: -1", "1,0,-1");
+            AssertThrowsException("negatives not allowed: -0", "1,1,-0");
+            AssertThrowsException("negatives not allowed: -12", "1,11,-12");
+            AssertThrowsException("negatives not allowed: -11", "12,1,-11");
+            AssertThrowsException("negatives not allowed: -10", "10,10,-10");
+        }
+
+        [TestMethod]
+        public void Test025_NegativeNumbers_Triple_middle()
+        {
+            AssertThrowsException("negatives not allowed: -1", "1,-1,1");
+            AssertThrowsException("negatives not allowed: -1", "0,-1,1");
+            AssertThrowsException("negatives not allowed: -0", "1,-0,1");
+            AssertThrowsException("negatives not allowed: -1", "1,-1,0");
+            AssertThrowsException("negatives not allowed: -11", "1,-11,12");
+            AssertThrowsException("negatives not allowed: -1", "12,-1,11");
+            AssertThrowsException("negatives not allowed: -10", "10,-10,10");
+        }
+
+        [TestMethod]
+        public void Test026_NegativeNumbers_Triple_starttwo()
+        {
+            AssertThrowsException("negatives not allowed: -1,-1", "-1,-1,1");
+            AssertThrowsException("negatives not allowed: -0,-1", "-0,-1,1");
+            AssertThrowsException("negatives not allowed: -1,-0", "-1,-0,1");
+            AssertThrowsException("negatives not allowed: -1,-1", "-1,-1,0");
+            AssertThrowsException("negatives not allowed: -1,-11", "-1,-11,12");
+            AssertThrowsException("negatives not allowed: -12,-1", "-12,-1,11");
+            AssertThrowsException("negatives not allowed: -10,-10", "-10,-10,10");
+        }
+
+        [TestMethod]
+        public void Test027_NegativeNumbers_Triple_endtwo()
+        {
+            AssertThrowsException("negatives not allowed: -1,-1", "1,-1,-1");
+            AssertThrowsException("negatives not allowed: -1,-1", "0,-1,-1");
+            AssertThrowsException("negatives not allowed: -0,-1", "1,-0,-1");
+            AssertThrowsException("negatives not allowed: -1,-0", "1,-1,-0");
+            AssertThrowsException("negatives not allowed: -11,-12", "1,-11,-12");
+            AssertThrowsException("negatives not allowed: -1,-11", "12,-1,-11");
+            AssertThrowsException("negatives not allowed: -10,-10", "10,-10,-10");
+        }
+
+        [TestMethod]
+        public void Test028_NegativeNumbers_Triple_ends()
+        {
+            AssertThrowsException("negatives not allowed: -1,-1", "-1,1,-1");
+            AssertThrowsException("negatives not allowed: -0,-1", "-0,1,-1");
+            AssertThrowsException("negatives not allowed: -1,-1", "-1,0,-1");
+            AssertThrowsException("negatives not allowed: -1,-0", "-1,1,-0");
+            AssertThrowsException("negatives not allowed: -1,-12", "-1,11,-12");
+            AssertThrowsException("negatives not allowed: -12,-10", "-12,1,-11");
+            AssertThrowsException("negatives not allowed: -10,-10", "-10,10,-10");
+        }
+
+        [TestMethod]
+        public void Test029_NegativeNumbers_Triple_all()
+        {
+            AssertThrowsException("negatives not allowed: -1,-1,-1", "-1,-1,-1");
+            AssertThrowsException("negatives not allowed: -0,-1,-1", "-0,-1,-1");
+            AssertThrowsException("negatives not allowed: -1,-0,-1", "-1,-0,-1");
+            AssertThrowsException("negatives not allowed: -1,-1,-0", "-1,-1,-0");
+            AssertThrowsException("negatives not allowed: -1,-11,-12", "-1,-11,-12");
+            AssertThrowsException("negatives not allowed: -12,-1,-10", "-12,-1,-11");
+            AssertThrowsException("negatives not allowed: -10,-10,-10", "-10,-10,-10");
+        }
+
+        [TestMethod]
+        public void Test030_NegativeNumbers_Triple_enter()
+        {
+            AssertThrowsException("negatives not allowed: -1", "-1\n1,1");
+            AssertThrowsException("negatives not allowed: -0", "-0,1\n1");
+            AssertThrowsException("negatives not allowed: -1", "-1\n0\n1");
+            AssertThrowsException("negatives not allowed: -1", "-1\n1,0");
+            AssertThrowsException("negatives not allowed: -1", "-1,11\n12");
+            AssertThrowsException("negatives not allowed: -12", "-12\n1\n11");
+            AssertThrowsException("negatives not allowed: -10", "-10,10\n10");
+
+            AssertThrowsException("negatives not allowed: -1", "1\n1,-1");
+            AssertThrowsException("negatives not allowed: -1", "0,1\n-1");
+            AssertThrowsException("negatives not allowed: -1", "1\n0\n-1");
+            AssertThrowsException("negatives not allowed: -0", "1\n1,-0");
+            AssertThrowsException("negatives not allowed: -12", "1,11\n-12");
+            AssertThrowsException("negatives not allowed: -11", "12\n1\n-11");
+            AssertThrowsException("negatives not allowed: -10", "10,10\n-10");
+
+            AssertThrowsException("negatives not allowed: -1", "1\n-1,1");
+            AssertThrowsException("negatives not allowed: -1", "0,-1\n1");
+            AssertThrowsException("negatives not allowed: -0", "1\n-0\n1");
+            AssertThrowsException("negatives not allowed: -1", "1\n-1,0");
+            AssertThrowsException("negatives not allowed: -11", "1,-11\n12");
+            AssertThrowsException("negatives not allowed: -1", "12\n-1\n11");
+            AssertThrowsException("negatives not allowed: -10", "10,-10\n10");
+
+            AssertThrowsException("negatives not allowed: -1,-1", "-1\n-1,1");
+            AssertThrowsException("negatives not allowed: -0,-1", "-0,-1\n1");
+            AssertThrowsException("negatives not allowed: -1,-0", "-1\n-0\n1");
+            AssertThrowsException("negatives not allowed: -1,-1", "-1\n-1,0");
+            AssertThrowsException("negatives not allowed: -1,-11", "-1,-11\n12");
+            AssertThrowsException("negatives not allowed: -12,-1", "-12\n-1\n11");
+            AssertThrowsException("negatives not allowed: -10,-10", "-10,-10\n10");
+
+            AssertThrowsException("negatives not allowed: -1,-1", "1\n-1,-1");
+            AssertThrowsException("negatives not allowed: -1,-1", "0,-1\n-1");
+            AssertThrowsException("negatives not allowed: -0,-1", "1\n-0\n-1");
+            AssertThrowsException("negatives not allowed: -1,-0", "1\n-1,-0");
+            AssertThrowsException("negatives not allowed: -11,-12", "1,-11\n-12");
+            AssertThrowsException("negatives not allowed: -1,-11", "12\n-1\n-11");
+            AssertThrowsException("negatives not allowed: -10,-10", "10,-10\n-10");
+
+            AssertThrowsException("negatives not allowed: -1,-1", "-1\n1,-1");
+            AssertThrowsException("negatives not allowed: -0,-1", "-0,1\n-1");
+            AssertThrowsException("negatives not allowed: -1,-1", "-1\n0\n-1");
+            AssertThrowsException("negatives not allowed: -1,-0", "-1\n1,-0");
+            AssertThrowsException("negatives not allowed: -1,-12", "-1,11\n-12");
+            AssertThrowsException("negatives not allowed: -12,-10", "-12\n1\n-11");
+            AssertThrowsException("negatives not allowed: -10,-10", "-10,10\n-10");
+
+            AssertThrowsException("negatives not allowed: -1,-1,-1", "-1\n-1,-1");
+            AssertThrowsException("negatives not allowed: -0,-1,-1", "-0,-1\n-1");
+            AssertThrowsException("negatives not allowed: -1,-0,-1", "-1\n-0\n-1");
+            AssertThrowsException("negatives not allowed: -1,-1,-0", "-1\n-1,-0");
+            AssertThrowsException("negatives not allowed: -1,-11,-12", "-1,-11\n-12");
+            AssertThrowsException("negatives not allowed: -12,-1,-10", "-12\n-1\n-11");
+            AssertThrowsException("negatives not allowed: -10,-10,-10", "-10,-10\n-10");
+        }
+
+        [TestMethod]
+        public void Test031_NegativeNumbers_Double_delimiters()
+        {
+            AssertThrowsException("negatives not allowed: -0", "//;\n-0;1");
+            AssertThrowsException("negatives not allowed: -10", "//;\n-10;10");
+            AssertThrowsException("negatives not allowed: -20", "//;\n-20;12");
+            AssertThrowsException("negatives not allowed: -333", "//;\n-333;130");
+            AssertThrowsException("negatives not allowed: -4567", "//;\n-4567;13");
+
+            AssertThrowsException("negatives not allowed: -0", "//;\n1;-0");
+            AssertThrowsException("negatives not allowed: -10", "//;\n10;-10");
+            AssertThrowsException("negatives not allowed: -20", "//;\n12;-20");
+            AssertThrowsException("negatives not allowed: -333", "//;\n130;-333");
+            AssertThrowsException("negatives not allowed: -4567", "//;\n13;-4567");
+
+            AssertThrowsException("negatives not allowed: -0,-1", "//;\n-0;-1");
+            AssertThrowsException("negatives not allowed: -10,-10", "//;\n-10;-10");
+            AssertThrowsException("negatives not allowed: -20,-12", "//;\n-20;-12");
+            AssertThrowsException("negatives not allowed: -333,-130", "//;\n-333;-130");
+            AssertThrowsException("negatives not allowed: -4567,-13", "//;\n-4567;-13");
+        }
+
+        [TestMethod]
+        public void Test032_NegativeNumbers_Triples_delimiters()
+        {
+            AssertThrowsException("negatives not allowed: -1", "//;\n-1;1,1");
+            AssertThrowsException("negatives not allowed: -0", "//;\n-0,1;1");
+            AssertThrowsException("negatives not allowed: -1", "//;\n-1;0;1");
+            AssertThrowsException("negatives not allowed: -1", "//;\n-1;1,0");
+            AssertThrowsException("negatives not allowed: -1", "//;\n-1,11;12");
+            AssertThrowsException("negatives not allowed: -12", "//;\n-12;1;11");
+            AssertThrowsException("negatives not allowed: -10", "//;\n-10,10;10");
+
+            AssertThrowsException("negatives not allowed: -1", "//;\n1\n1;-1");
+            AssertThrowsException("negatives not allowed: -1", "//;\n0;1\n-1");
+            AssertThrowsException("negatives not allowed: -1", "//;\n1;0;-1");
+            AssertThrowsException("negatives not allowed: -0", "//;\n1\n1;-0");
+            AssertThrowsException("negatives not allowed: -12", "//;\n1;11\n-12");
+            AssertThrowsException("negatives not allowed: -11", "//;\n12;1;-11");
+            AssertThrowsException("negatives not allowed: -10", "//;\n10;10\n-10");
+
+            AssertThrowsException("negatives not allowed: -1", "//;\n1;-1,1");
+            AssertThrowsException("negatives not allowed: -1", "//;\n0,-1;1");
+            AssertThrowsException("negatives not allowed: -0", "//;\n1;-0;1");
+            AssertThrowsException("negatives not allowed: -1", "//;\n1;-1,0");
+            AssertThrowsException("negatives not allowed: -11", "//;\n1,-11;12");
+            AssertThrowsException("negatives not allowed: -1", "//;\n12;-1;11");
+            AssertThrowsException("negatives not allowed: -10", "//;\n10,-10;10");
+
+            AssertThrowsException("negatives not allowed: -1,-1", "//;\n-1\n-1;1");
+            AssertThrowsException("negatives not allowed: -0,-1", "//;\n-0;-1\n1");
+            AssertThrowsException("negatives not allowed: -1,-0", "//;\n-1;-0;1");
+            AssertThrowsException("negatives not allowed: -1,-1", "//;\n-1\n-1;0");
+            AssertThrowsException("negatives not allowed: -1,-11", "//;\n-1;-11\n12");
+            AssertThrowsException("negatives not allowed: -12,-1", "//;\n-12;-1;11");
+            AssertThrowsException("negatives not allowed: -10,-10", "//;\n-10;-10\n10");
+
+            AssertThrowsException("negatives not allowed: -1,-1", "//;\n1;-1,-1");
+            AssertThrowsException("negatives not allowed: -1,-1", "//;\n0,-1;-1");
+            AssertThrowsException("negatives not allowed: -0,-1", "//;\n1;-0\n-1");
+            AssertThrowsException("negatives not allowed: -1,-0", "//;\n1;-1,-0");
+            AssertThrowsException("negatives not allowed: -11,-12", "//;\n1,-11;-12");
+            AssertThrowsException("negatives not allowed: -1,-11", "//;\n12;-1;-11");
+            AssertThrowsException("negatives not allowed: -10,-10", "//;\n10,-10;-10");
+
+            AssertThrowsException("negatives not allowed: -1,-1", "//;\n-1\n1;-1");
+            AssertThrowsException("negatives not allowed: -0,-1", "//;\n-0;1\n-1");
+            AssertThrowsException("negatives not allowed: -1,-1", "//;\n-1;0;-1");
+            AssertThrowsException("negatives not allowed: -1,-0", "//;\n-1\n1;-0");
+            AssertThrowsException("negatives not allowed: -1,-12", "//;\n-1;11\n-12");
+            AssertThrowsException("negatives not allowed: -12,-10", "//;\n-12;1;-11");
+            AssertThrowsException("negatives not allowed: -10,-10", "//;\n-10;10\n-10");
+
+            AssertThrowsException("negatives not allowed: -1,-1,-1", "//;\n-1;-1,-1");
+            AssertThrowsException("negatives not allowed: -0,-1,-1", "//;\n-0,-1;-1");
+            AssertThrowsException("negatives not allowed: -1,-0,-1", "//;\n-1;-0;-1");
+            AssertThrowsException("negatives not allowed: -1,-1,-0", "//;\n-1;-1,-0");
+            AssertThrowsException("negatives not allowed: -1,-11,-12", "//;\n-1,-11;-12");
+            AssertThrowsException("negatives not allowed: -12,-1,-10", "//;\n-12;-1;-11");
+            AssertThrowsException("negatives not allowed: -10,-10,-10", "//;\n-10,-10;-10");
+        }
     }
 }
