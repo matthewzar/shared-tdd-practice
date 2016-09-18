@@ -19,20 +19,29 @@ namespace TDDPractice
             throw new ArgumentException();
         }
 
+        public static void HandleNegatives(IEnumerable<string> strings)
+        {
+            var negatives = 
+                (from value in strings
+                 where value[0] == '-'
+                 select value).Aggregate((x, y) => x + "," + y);
+
+            throw new Exception("negatives not allowed: " + negatives);
+        }
+
         public static int StringCalculatorKata(string str)
         {
-            if (str == "")
-            {
-                return 0;
-            }
+            if (str == "") return 0;
 
-            var stringarray = str.Split(',');
-            int temp = 0;
-            foreach (var num in stringarray)
-            {
-                temp += int.Parse(num);
-            }
-            return temp;
+            if(str.StartsWith("//")) str = str.Replace(str[2], ',').Replace("//,\n", "");
+
+            var stringarray = str.Replace('\n',',').Split(',');
+                        
+            if(str.Contains('-'))
+                HandleNegatives(stringarray);
+
+            return stringarray.Select(strNum => int.Parse(strNum))
+                              .Aggregate((x, y) => x + y);
         }
     }
 }

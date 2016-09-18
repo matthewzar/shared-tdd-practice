@@ -437,7 +437,7 @@ namespace TDDPractice_Tests
             AssertThrowsException("negatives not allowed: -1,-1", "-1,0,-1");
             AssertThrowsException("negatives not allowed: -1,-0", "-1,1,-0");
             AssertThrowsException("negatives not allowed: -1,-12", "-1,11,-12");
-            AssertThrowsException("negatives not allowed: -12,-10", "-12,1,-11");
+            AssertThrowsException("negatives not allowed: -12,-11", "-12,1,-11");
             AssertThrowsException("negatives not allowed: -10,-10", "-10,10,-10");
         }
 
@@ -449,7 +449,7 @@ namespace TDDPractice_Tests
             AssertThrowsException("negatives not allowed: -1,-0,-1", "-1,-0,-1");
             AssertThrowsException("negatives not allowed: -1,-1,-0", "-1,-1,-0");
             AssertThrowsException("negatives not allowed: -1,-11,-12", "-1,-11,-12");
-            AssertThrowsException("negatives not allowed: -12,-1,-10", "-12,-1,-11");
+            AssertThrowsException("negatives not allowed: -12,-1,-11", "-12,-1,-11");
             AssertThrowsException("negatives not allowed: -10,-10,-10", "-10,-10,-10");
         }
 
@@ -501,7 +501,7 @@ namespace TDDPractice_Tests
             AssertThrowsException("negatives not allowed: -1,-1", "-1\n0\n-1");
             AssertThrowsException("negatives not allowed: -1,-0", "-1\n1,-0");
             AssertThrowsException("negatives not allowed: -1,-12", "-1,11\n-12");
-            AssertThrowsException("negatives not allowed: -12,-10", "-12\n1\n-11");
+            AssertThrowsException("negatives not allowed: -12,-11", "-12\n1\n-11");
             AssertThrowsException("negatives not allowed: -10,-10", "-10,10\n-10");
 
             AssertThrowsException("negatives not allowed: -1,-1,-1", "-1\n-1,-1");
@@ -509,7 +509,7 @@ namespace TDDPractice_Tests
             AssertThrowsException("negatives not allowed: -1,-0,-1", "-1\n-0\n-1");
             AssertThrowsException("negatives not allowed: -1,-1,-0", "-1\n-1,-0");
             AssertThrowsException("negatives not allowed: -1,-11,-12", "-1,-11\n-12");
-            AssertThrowsException("negatives not allowed: -12,-1,-10", "-12\n-1\n-11");
+            AssertThrowsException("negatives not allowed: -12,-1,-11", "-12\n-1\n-11");
             AssertThrowsException("negatives not allowed: -10,-10,-10", "-10,-10\n-10");
         }
 
@@ -583,7 +583,7 @@ namespace TDDPractice_Tests
             AssertThrowsException("negatives not allowed: -1,-1", "//;\n-1;0;-1");
             AssertThrowsException("negatives not allowed: -1,-0", "//;\n-1\n1;-0");
             AssertThrowsException("negatives not allowed: -1,-12", "//;\n-1;11\n-12");
-            AssertThrowsException("negatives not allowed: -12,-10", "//;\n-12;1;-11");
+            AssertThrowsException("negatives not allowed: -12,-11", "//;\n-12;1;-11");
             AssertThrowsException("negatives not allowed: -10,-10", "//;\n-10;10\n-10");
 
             AssertThrowsException("negatives not allowed: -1,-1,-1", "//;\n-1;-1,-1");
@@ -591,7 +591,7 @@ namespace TDDPractice_Tests
             AssertThrowsException("negatives not allowed: -1,-0,-1", "//;\n-1;-0;-1");
             AssertThrowsException("negatives not allowed: -1,-1,-0", "//;\n-1;-1,-0");
             AssertThrowsException("negatives not allowed: -1,-11,-12", "//;\n-1,-11;-12");
-            AssertThrowsException("negatives not allowed: -12,-1,-10", "//;\n-12;-1;-11");
+            AssertThrowsException("negatives not allowed: -12,-1,-11", "//;\n-12;-1;-11");
             AssertThrowsException("negatives not allowed: -10,-10,-10", "//;\n-10,-10;-10");
         }
     }
