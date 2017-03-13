@@ -4,9 +4,17 @@ using TDDPractice;
 
 namespace TDDPractice_Tests
 {
+    /// <summary>
+    /// Test the string to int parser. Checks include positive and negative numbers, as well as invalid inputs causing exceptions
+    /// </summary>
+
     [TestClass]
     public class SimpleStringParsing_StringToInt_Tests
     {
+         /// <summary>
+        /// Check that positive numbers are parsed
+        /// </summary>
+
         [TestMethod]
         public void SimpleBaseCases()
         {
@@ -15,6 +23,10 @@ namespace TDDPractice_Tests
             Assert.AreEqual(100, SimpleStringParsing.StringToInt("100"), "Three digit test: 100");
             Assert.AreEqual(8, SimpleStringParsing.StringToInt("8"), "One digit test: 8");
         }
+        /// <summary>
+        /// Check that negative numbers are parsed
+        /// </summary>
+
 
         [TestMethod]
         public void NegativeNumCases()
@@ -26,6 +38,10 @@ namespace TDDPractice_Tests
         }
 
         [TestMethod]
+         /// <summary>
+        /// Check that invalid (non integer) inputs throw the required exception
+        /// </summary>
+
         public void InvalidStrings()
         {
             try
@@ -39,6 +55,10 @@ namespace TDDPractice_Tests
             }
         }
     }
+     /// <summary>
+    /// A wide array of tests for StringCalculator. Test methods are formatted so that they are self-documenting: clear names + clear error messages
+    /// </summary>
+
 
     [TestClass]
     public class SimpleStringParsing_StringCalculatorKata_Tests
@@ -293,6 +313,13 @@ namespace TDDPractice_Tests
             Assert.AreEqual(24, SimpleStringParsing.StringCalculatorKata("//*\n12\n1\n11"));
             Assert.AreEqual(30, SimpleStringParsing.StringCalculatorKata("//*\n10\n10\n10"));
         }
+          /// <summary>
+        /// This assertion helper method expects a given input to fail when passed to StringCalculatorKata.
+        /// IF the actual and expected error messages don't match the assert will also fail.
+        /// </summary>
+        /// <param name="expectedErrorMessage">The error message that is expected to be thrown</param>
+        /// <param name="input">The value to be passed to StringCalculatorKata method</param>
+
 
         private void AssertThrowsException(string expectedErrorMessage, string input)
         {
